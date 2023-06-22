@@ -14,7 +14,7 @@ public class monthly extends AppCompatActivity {
     TextView bulan,sisa,sisabulan;
     dbhelper db;
     EditText edit;
-    Button button;
+    Button button,button2;
 
     int sisajumlah,bulanan;
     @Override
@@ -30,6 +30,7 @@ public class monthly extends AppCompatActivity {
         bulan.setText("Rp. "+String.valueOf(bulanan));
         edit = findViewById(R.id.editbulanan);
         button = findViewById(R.id.button);
+        button2= findViewById(R.id.button2);
         sisajumlah = db.ambilTotal();
         sisa.setText("Rp. "+String.valueOf(sisajumlah));
         sisabulan.setText("Rp. "+String.valueOf(bulanan-sisajumlah));
@@ -37,6 +38,13 @@ public class monthly extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 db.editbulanan(Integer.parseInt(String.valueOf(edit.getText())));
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(monthly.this, MainActivity.class);
+                startActivity(intent);
             }
         });
 
